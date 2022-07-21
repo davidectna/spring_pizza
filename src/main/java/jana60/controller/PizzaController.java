@@ -1,9 +1,14 @@
 package jana60.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jana60.model.Pizza;
@@ -24,7 +29,18 @@ public class PizzaController {
 	
 	@GetMapping("/form")
 	public String pizzaForm(Model model) {
-		model.addAttribute("Pizza-Form", new Pizza());
+		model.addAttribute("PizzaForm", new Pizza());
 		return "/pizza/pizzaform";
+	}
+	
+	@PostMapping("/form")
+	public String savePizza (@Valid @ModelAttribute("PizzaForm") Pizza pizzaForm, BindingResult br) {
+		if (br.hasErrors()) {
+			return "/pizza/pizzaform";}
+		else {
+			repo.save(pizzaForm);
+			return "redirect:/";
+		}
+		
 	}
 }

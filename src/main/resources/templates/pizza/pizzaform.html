@@ -7,5 +7,55 @@
 </head>
 <body>
     <nav th:replace="fragments/fragments :: navbar(form)"></nav>
+    <form 
+    	id="book"
+    	th:object="${PizzaForm}"
+    	th:action="@{/form}"
+    	method ="post">
+		
+		<ul>
+		      <li 
+		         th:each="err : ${#fields.allErrors()}" 
+		         th:text="${err}">
+		      </li>
+		</ul>
+		<!-- primo campo-->
+		<div class="mb-3">
+  				<label class="form-label" for="name">Nome</label>
+  				<input type="text" id="name" class="form-control" th:field="*{name}" th:errorClass="is-invalid">
+  				<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+  					<ul>
+  						<li th:each="err : ${#fields.errors('name')}" th:text="${err}">
+  					</ul>
+  				</div>
+  			</div>
+  			<!-- primo campo-->
+  			<!-- secondo campo-->
+  			<div class="mb-3">
+  				<label class="form-label" for="description">Descrizione</label>
+  				<input type="text" id="description" class="form-control" th:field="*{description}" th:errorClass="is-invalid">
+  				<div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
+  					<ul>
+  						<li th:each="err : ${#fields.errors('description')}" th:text="${err}">
+  					</ul>
+  				</div>
+  			</div>
+  			<!-- secondo campo-->
+  			<!-- terzo campo-->
+  			<div class="mb-3">
+  				<label class="form-label" for="price">Prezzo</label>
+  				<input type="number" id="price" class="form-control" th:field="*{price}" th:errorClass="is-invalid">
+  				<div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
+  					<ul>
+  						<li th:each="err : ${#fields.errors('price')}" th:text="${err}">
+  					</ul>
+  				</div>
+  			</div>
+  			<!-- terzo campo-->
+  			<div>
+  				<button type="submit" class="btn btn-primary">Save</button>
+  				<a class="btn btn-primary" href="/">Cancel</a>
+  			</div>
+    </form>
 </body>
 </html>
