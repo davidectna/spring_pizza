@@ -1,0 +1,1 @@
+insert into Pizza (description,name,price) values('Pizza classica italiana','Margherita','5');

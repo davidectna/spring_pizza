@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:replace="fragments/fragments :: risorse-head"></th:block>
+    <title>Home</title>
+</head>
+<body>
+    <nav th:replace="fragments/fragments :: navbar(list)" ></nav>
+    <div class="container"></div>
+
+    <table class="table table-light">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Prezzo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="pl : ${PizzaList}">
+            <td th:text ="pl.name"></td>
+            <td th:text ="pl.description"></td>
+            <td th:text ="pl.price"></td>
+          </tr>
+        </tbody>
+      </table>
+</body>
+</html>
