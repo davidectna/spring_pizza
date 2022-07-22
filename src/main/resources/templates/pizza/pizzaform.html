@@ -8,8 +8,8 @@
 <body>
     <nav th:replace="fragments/fragments :: navbar(form)"></nav>
     <form 
-    	id="book"
-    	th:object="${PizzaForm}"
+    	id="pizzaid"
+    	th:object="${pizzaForm}"
     	th:action="@{/form}"
     	method ="post">
 		

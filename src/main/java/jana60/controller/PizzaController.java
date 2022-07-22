@@ -23,18 +23,18 @@ public class PizzaController {
 	
 	@GetMapping
 	public String pizzaList(Model model) {
-		model.addAttribute("PizzaList",repo.findAll());
+		model.addAttribute("pizzaList",repo.findAll());
 		return "/pizza/pizzalist";
 	}
 	
 	@GetMapping("/form")
 	public String pizzaForm(Model model) {
-		model.addAttribute("PizzaForm", new Pizza());
+		model.addAttribute("pizzaForm", new Pizza());
 		return "/pizza/pizzaform";
 	}
 	
 	@PostMapping("/form")
-	public String savePizza (@Valid @ModelAttribute("PizzaForm") Pizza pizzaForm, BindingResult br) {
+	public String savePizza (@Valid @ModelAttribute("pizzaForm") Pizza pizzaForm, BindingResult br) {
 		if (br.hasErrors()) {
 			return "/pizza/pizzaform";}
 		else {

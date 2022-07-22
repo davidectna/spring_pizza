@@ -16,7 +16,7 @@ public class Pizza {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Integer id;
 	
-	@NotEmpty(message= "Manca il nome cazzone")
+	@NotEmpty(message= "Manca il nome")
 	@Column(nullable = false)
 	private String name;
 	
@@ -25,7 +25,7 @@ public class Pizza {
 	private String description;
 	
 	@Column(nullable = false)
-	@NotEmpty(message = "manca il prezzo minchione")
+	@NotEmpty(message = "manca il prezzo")
 	private Integer price;
 
 	public Integer getId() {
