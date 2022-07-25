@@ -7,16 +7,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </th:block>
 </head>
 <body>
     <nav th:fragment ="navbar(current)" class="navbar navbar-expand-lg bg-white">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"> <img src="/img/pizzeria-logo.jpg" alt="" width="55" height="55" class="d-inline-block align-text-center">Pizzeria Generation</a>
+          <a class="navbar-brand" href="#"> <img src="/img/Logo pizzeria.jpg" alt="" width="65" height="55" class="d-inline-block align-text-center">Pizzeria Generation</a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item hoverlink">
-                <a class="nav-link " th:classAppend="${current == 'list'} ? active : not-active" href="/">Le Nostre Pizze</a>
+                <a class="nav-link" th:classAppend="${current == 'list'} ? active : not-active" href="/">Le Nostre Pizze</a>
               </li>
               <li class="nav-item hoverlink">
                 <a class="nav-link" th:classAppend="${current == 'form'} ? active : not-active" href="/form">Aggiungi una pizza</a>

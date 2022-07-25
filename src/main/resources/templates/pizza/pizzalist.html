@@ -7,23 +7,37 @@
 </head>
 <body>
     <nav th:replace="fragments/fragments :: navbar(list)" ></nav>
-    <div class="container"></div>
+    
+    <div class="container">
 
-    <table class="table table-light">
+    <table class="table table-light" th:if="${pizzaList.size() > 0}">
         <thead>
           <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Descrizione</th>
-            <th scope="col">Prezzo</th>
+            <th scope="col" class="text-uppercase">Nome</th>
+            <th scope="col" class="text-uppercase">Descrizione</th>
+            <th scope="col" class="text-uppercase">Prezzo</th>
+            <th scope="col" class="text-uppercase">Modifica</th>
           </tr>
-        </thead>
+        </thead> 
         <tbody>
-          <tr th:each="pl : ${PizzaList}">
-            <td th:text ="pl.name"></td>
-            <td th:text ="pl.description"></td>
-            <td th:text ="pl.price"></td>
+          <tr th:each="pl : ${pizzaList}">
+            <td th:text ="${pl.name}"></td>
+            <td th:text ="${pl.description}"></td>
+            <td th:text ="${pl.price}"></td>
+            <td>
+            	<a class="btn btn-success" th:href="@{|/edit/${pl.id}|}" title="Modifica" role="button">
+            		<i class="fa-solid fa-file-pen"></i>
+            	</a>
+            	<a class="btn btn-danger" th:href="@{|/delete/${pl.id}|}" title="Elimina" role="button">
+            		<i class="fa-solid fa-trash-can"></i>
+            	</a>
+            </td>
           </tr>
         </tbody>
       </table>
+      <div/>
+    <div class="alert alert-info my-5" th:unless="${pizzaList.size() > 0}"> 
+      	<h4>"Nessuna pizza è stata pubblicata"</h4>
+      </div>
 </body>
 </html>

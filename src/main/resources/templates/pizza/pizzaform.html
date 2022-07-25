@@ -7,11 +7,14 @@
 </head>
 <body>
     <nav th:replace="fragments/fragments :: navbar(form)"></nav>
+    <div class="container">
+    
+    
     <form 
-    	id="pizzaid"
+    	id="pizzaId"
     	th:object="${pizzaForm}"
-    	th:action="@{/form}"
-    	method ="post">
+    	th:action="@{/save}"
+    	method ="POST">
 		
 		<ul>
 		      <li 
@@ -19,43 +22,48 @@
 		         th:text="${err}">
 		      </li>
 		</ul>
-		<!-- primo campo-->
-		<div class="mb-3">
+		
+		<!-- id field-->
+		<input type="hidden" th:field="*{id}">
+		<!-- id field-->
+		<!-- name field-->
+			<div class="mb-3">
   				<label class="form-label" for="name">Nome</label>
   				<input type="text" id="name" class="form-control" th:field="*{name}" th:errorClass="is-invalid">
   				<div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
   					<ul>
-  						<li th:each="err : ${#fields.errors('name')}" th:text="${err}">
+  						<li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
   					</ul>
   				</div>
   			</div>
-  			<!-- primo campo-->
-  			<!-- secondo campo-->
+  			<!-- name field-->
+  			<!-- description field-->
   			<div class="mb-3">
   				<label class="form-label" for="description">Descrizione</label>
   				<input type="text" id="description" class="form-control" th:field="*{description}" th:errorClass="is-invalid">
   				<div th:if="${#fields.hasErrors('description')}" class="invalid-feedback">
   					<ul>
-  						<li th:each="err : ${#fields.errors('description')}" th:text="${err}">
+  						<li th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
   					</ul>
   				</div>
   			</div>
-  			<!-- secondo campo-->
-  			<!-- terzo campo-->
+  			<!-- description field-->
+  			<!-- price field-->
   			<div class="mb-3">
   				<label class="form-label" for="price">Prezzo</label>
-  				<input type="number" id="price" class="form-control" th:field="*{price}" th:errorClass="is-invalid">
+  				<input type="text" id="price" class="form-control" th:field="*{price}" th:errorClass="is-invalid">
   				<div th:if="${#fields.hasErrors('price')}" class="invalid-feedback">
   					<ul>
-  						<li th:each="err : ${#fields.errors('price')}" th:text="${err}">
+  						<li th:each="err : ${#fields.errors('price')}" th:text="${err}"></li>
   					</ul>
   				</div>
   			</div>
-  			<!-- terzo campo-->
+  			<!-- price field-->
   			<div>
-  				<button type="submit" class="btn btn-primary">Save</button>
-  				<a class="btn btn-primary" href="/">Cancel</a>
+  				<button type="submit" class="btn btn-success">Save</button>
+  				<a class="btn btn-danger" th:href="@{/}">Cancel</a>
   			</div>
     </form>
+   </div>
 </body>
 </html>

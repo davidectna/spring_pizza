@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Entity
 public class Pizza {
 
-	@Id
+	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 private Integer id;
 	
@@ -24,9 +24,11 @@ public class Pizza {
 	@Size(min = 10)
 	private String description;
 	
+	@NotEmpty(message = "Manca il prezzo")
 	@Column(nullable = false)
-	@NotEmpty(message = "manca il prezzo")
-	private Integer price;
+	private String price;
+	
+	//getter and setter
 
 	public Integer getId() {
 		return id;
@@ -52,14 +54,14 @@ public class Pizza {
 		this.description = description;
 	}
 
-	public Integer getPrice() {
+	public String getPrice() {
 		return price;
 	}
 
-	public void setPrice(Integer price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	
-	//getter and setter
+
 	
 }
